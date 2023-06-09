@@ -4,22 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
+use App\Http\Controllers\Api\Controller as ApiController;
 use App\Models\Car;
 
-class CarController extends Controller
+class CarController extends ApiController
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
     {
         //
     }
@@ -36,14 +29,6 @@ class CarController extends Controller
      * Display the specified resource.
      */
     public function show(Car $car)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Car $car)
     {
         //
     }
