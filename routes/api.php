@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('cars', CarController::class);
-Route::get('cars/{car}?deleted=true', [CarController::class, 'show'])->withTrashed();
+Route::get('cars/{car}/deleted', [CarController::class, 'show'])->withTrashed();
 Route::post('cars/{car}/restore', [CarController::class, 'restore'])->withTrashed();
