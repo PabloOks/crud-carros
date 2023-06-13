@@ -2,10 +2,14 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class StoreCarRequest extends FormRequest
 {
+    // protected $stopOnFirstFailure = true;
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -38,5 +42,16 @@ class StoreCarRequest extends FormRequest
             'year.required' => 'Informe o ano de fabricação do veículo',
             'year.integer' => 'O ano de fabricação informado não está em um formato válido'
         ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     */
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json([
+            'errors' => $validator->errors(),
+            'status' => true,
+        ], 422));
     }
 }
